@@ -1,0 +1,29 @@
+.Contact {
+  display: flex;
+  align-items: center;
+
+  padding: 10px 20px;
+  border: 1px solid #00000038;
+  border-radius: 10px;
+}
+.Contact svg {
+  margin-right: 10px;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.deleteBtn {
+  margin-left: auto;
+  padding: 5px 20px;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background-color: rgb(40, 238, 231);
+  box-shadow: 4px 4px 20px #00000043;
+
+  cursor: pointer;
+}
