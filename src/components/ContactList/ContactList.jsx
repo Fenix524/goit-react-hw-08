@@ -27,12 +27,12 @@ const ContactList = () => {
 			{isLoading && <b>Loading tasks...</b>}
 			{error && <b>{error}</b>}
 			<ul className={css.ContactList}>
-				{contactArr.map(({ id, name, phone }) => (
+				{contactArr.map(({ id, name, number }) => (
 					<Contact
 						key={id}
 						id={id}
 						name={name}
-						number={phone}
+						number={number}
 						onContactDelete={() => dispatch(deleteContact(id))}
 					/>
 				))}

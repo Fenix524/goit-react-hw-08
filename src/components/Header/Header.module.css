@@ -1,0 +1,32 @@
+.Header {
+	border: 1px solid #0000001e;
+	padding: 20px 0;
+}
+.headerWraper {
+	display: flex;
+	justify-content: space-between;
+}
+.logo {
+	font-size: 25px;
+	font-weight: 700;
+}
+.navBox {
+	display: flex;
+	gap: 20px;
+}
+.loginBox {
+	display: flex;
+	gap: 10px;
+}
+.navItem {
+	padding: 10px 20px;
+	font-size: 18px;
+}
+.loginBox .navItem {
+	background-color: #32f7e360;
+	border-radius: 10px;
+	border-color: transparent;
+	border-width: 1px;
+
+	cursor: pointer;
+}

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import css from './ContactForm.module.css'
 
@@ -7,6 +7,7 @@ import { nanoid } from '@reduxjs/toolkit'
 import { useId } from 'react'
 import { useDispatch } from 'react-redux'
 import { addContact } from '../../redux/contacts/operations'
+import TextField from '../TextField/TextField'
 
 const ContactForm = () => {
 	const contactNameId = useId()
@@ -46,39 +47,22 @@ const ContactForm = () => {
 				validationSchema={FeedbackSchema}
 			>
 				<Form className={css.form}>
-					<div>
-						<label className={css.label} htmlFor={contactNameId}>
-							Імя
-						</label>
-						<Field
-							className={css.field}
-							type='text'
-							id={contactNameId}
-							name='contactname'
-						/>
-						<ErrorMessage
-							className={css.errorMessage}
-							name='contactname'
-							component='span'
-						/>
-					</div>
-					<div>
-						<label className={css.label} htmlFor={contactPhoneId}>
-							Номер телефону
-						</label>
-						<Field
-							className={css.field}
-							type='text'
-							id={contactPhoneId}
-							name='contactphone'
-						/>
-
-						<ErrorMessage
-							className={css.errorMessage}
-							name='contactphone'
-							component='span'
-						/>
-					</div>
+					{/* Use the TextField component for name and phone fields */}
+					<TextField
+						fieldSettings={{
+							fieldTitle: 'Name',
+							fieldId: useId(),
+							fieldName: 'contactname',
+						}}
+					/>
+					<TextField
+						fieldSettings={{
+							fieldTitle: 'Phone number',
+							fieldId: useId(),
+							fieldName: 'contactphone',
+							fieldType: 'tel',
+						}}
+					/>
 
 					<button className={css.btn} type='submit'>
 						Submit

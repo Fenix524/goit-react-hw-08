@@ -4,14 +4,16 @@ import { selectFilter } from '../filters/selectors'
 export const selectContacts = state => state.contacts
 export const selectContactsPopup = state => state.contacts.popupMessage
 export const selectContactsList = state => state.contacts.items
-console.log(selectContactsList)
+// console.log(selectContactsList)
 
 export const contactArrByFilters = createSelector(
 	[selectContactsList, selectFilter],
 	(contactArr, filterText) => {
-		console.log(contactArr, filterText)
-		return contactArr.filter(contact =>
-			contact.name?.toLowerCase().includes(filterText?.toLowerCase())
+		// console.log(contactArr, filterText)
+		return contactArr.filter(
+			contact =>
+				contact.name?.toLowerCase().includes(filterText?.toLowerCase()) ||
+				contact.number?.toLowerCase().includes(filterText?.toLowerCase())
 		)
 	}
 )
