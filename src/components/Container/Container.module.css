@@ -2,7 +2,7 @@
 	max-width: 1270px;
 	margin: 0 auto;
 	padding: 0 15px;
-	position: relative;
+	/* position: relative; */
 
 	display: flex;
 	flex-direction: column;

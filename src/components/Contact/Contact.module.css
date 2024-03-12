@@ -1,6 +1,7 @@
 .Contact {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 
 	padding: 10px 20px;
 	border: 1px solid #00000038;
@@ -25,5 +26,24 @@
 	background-color: rgb(40, 238, 231);
 	box-shadow: 4px 4px 20px #00000043;
 
+	cursor: pointer;
+}
+.navBox {
+	height: 100%;
+	justify-content: space-between;
+
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+.changeBtn {
+	padding: 8px;
+	margin-left: auto;
+	transform: translate(15px, -5px);
+
+	display: block;
+
+	background-color: transparent;
+	border-color: transparent;
 	cursor: pointer;
 }

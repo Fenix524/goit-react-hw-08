@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { MESSAGE_TYPES } from '../constants'
-import { addContact, deleteContact, fetchContacts } from './operations'
+import {
+	addContact,
+	changeContact,
+	deleteContact,
+	fetchContacts,
+} from './operations'
 
 const initialState = {
 	items: [],
@@ -57,6 +62,31 @@ export const contactsSlice = createSlice({
 				state.popupMessage = {
 					text: `При видаленні контакту ${payload.name} сталася помилка: 
 				${payload}`,
+					type: MESSAGE_TYPES.ERROR,
+				}
+			})
+			.addCase(changeContact.pending, state => {
+				state.isLoading = true
+			})
+			.addCase(changeContact.fulfilled, (state, { payload }) => {
+				state.isLoading = false
+				state.error = null
+				const updatedIndex = state.items.findIndex(
+					item => item.id === payload.id
+				)
+				if (updatedIndex !== -1) {
+					state.items[updatedIndex] = payload
+				}
+				state.popupMessage = {
+					text: `Контакт ${payload.name} успішно оновлено`,
+					type: MESSAGE_TYPES.SUCCESS,
+				}
+			})
+			.addCase(changeContact.rejected, (state, { payload }) => {
+				state.isLoading = false
+				state.error = payload
+				state.popupMessage = {
+					text: `При оновленні контакту сталася помилка: ${payload}`,
 					type: MESSAGE_TYPES.ERROR,
 				}
 			})

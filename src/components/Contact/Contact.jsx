@@ -2,10 +2,10 @@
 import css from './Contact.module.css'
 
 import { BsTelephoneFill } from 'react-icons/bs'
-import { FaUser } from 'react-icons/fa'
+import { FaPencilAlt, FaUser } from 'react-icons/fa'
 import { FaTrashCan } from 'react-icons/fa6'
 
-const Contact = ({ id, name, number, onContactDelete }) => {
+const Contact = ({ id, name, number, onContactDelete, openModal }) => {
 	return (
 		<div className={css.Contact} id={id}>
 			<div>
@@ -18,15 +18,25 @@ const Contact = ({ id, name, number, onContactDelete }) => {
 					<p>{number}</p>
 				</div>
 			</div>
-			<button
-				className={css.deleteBtn}
-				onClick={() => {
-					onContactDelete(id)
-				}}
-			>
-				<FaTrashCan />
-				<p>Delete</p>
-			</button>
+			<div className={css.navBox}>
+				<button
+					className={css.changeBtn}
+					onClick={() => {
+						openModal({ id, name, number })
+					}}
+				>
+					<FaPencilAlt size={25} />
+				</button>
+				<button
+					className={css.deleteBtn}
+					onClick={() => {
+						onContactDelete(id)
+					}}
+				>
+					<FaTrashCan />
+					<p>Delete</p>
+				</button>
+			</div>
 		</div>
 	)
 }

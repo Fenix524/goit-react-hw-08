@@ -3,20 +3,19 @@ import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import css from './ContactForm.module.css'
 
-import { nanoid } from '@reduxjs/toolkit'
 import { useId } from 'react'
-import { useDispatch } from 'react-redux'
-import { addContact } from '../../redux/contacts/operations'
 import TextField from '../TextField/TextField'
 
-const ContactForm = () => {
-	const contactNameId = useId()
-	const contactPhoneId = useId()
-
-	const initialValues = {
+const ContactForm = ({
+	initialValues = {
 		contactname: '',
 		contactphone: '',
-	}
+	},
+	onSubmit,
+	closeModal,
+}) => {
+	const contactNameId = useId()
+	const contactPhoneId = useId()
 
 	const FeedbackSchema = Yup.object().shape({
 		contactname: Yup.string()
@@ -29,11 +28,12 @@ const ContactForm = () => {
 			.required('Required'),
 	})
 
-	const dispatch = useDispatch()
 	const handleSubmit = (values, actions) => {
-		const { contactname, contactphone } = values
-		dispatch(addContact({ name: contactname, phone: contactphone }))
+		// const { contactname, contactphone } = values
+		// dispatch(addContact({ name: contactname, phone: contactphone }))
 
+		console.log('Submit contact form', values)
+		onSubmit(values)
 		actions.resetForm()
 	}
 
@@ -49,14 +49,14 @@ const ContactForm = () => {
 					<TextField
 						fieldSettings={{
 							fieldTitle: 'Name',
-							fieldId: useId(),
+							fieldId: contactNameId,
 							fieldName: 'contactname',
 						}}
 					/>
 					<TextField
 						fieldSettings={{
 							fieldTitle: 'Phone number',
-							fieldId: useId(),
+							fieldId: contactPhoneId,
 							fieldName: 'contactphone',
 							fieldType: 'tel',
 						}}
