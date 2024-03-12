@@ -42,7 +42,7 @@ export const contactsSlice = createSlice({
 					type: MESSAGE_TYPES.SUCCESS,
 				}
 				state.items.push(payload)
-				console.log(payload)
+				// console.log(payload)
 			})
 			.addCase(addContact.rejected, (state, { payload }) => {
 				state.popupMessage = {

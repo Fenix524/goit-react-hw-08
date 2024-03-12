@@ -42,7 +42,7 @@ const RegisterForm = () => {
 	})
 
 	const handleSubmit = ({ name, email, password }, actions) => {
-		console.log({ name, email, password })
+		// console.log({ name, email, password })
 		dispatch(register({ name: name, email: email, password: password }))
 			.unwrap()
 			.then(() => {

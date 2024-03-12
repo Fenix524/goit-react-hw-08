@@ -26,8 +26,8 @@ const ContactList = () => {
 	}, [message])
 
 	const openModal = userData => {
-		console.log('Open change form', userData)
-		setChangeContactData(userData) // Update state only once
+		// console.log('Open change form', userData)
+		setChangeContactData(userData)
 		setVisibleModal(true)
 	}
 

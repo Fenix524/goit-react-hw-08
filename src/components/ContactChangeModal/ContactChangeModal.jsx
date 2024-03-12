@@ -10,19 +10,13 @@ const ContactChangeModal = ({
 	const dispatch = useDispatch()
 
 	const onChangeContact = values => {
-		console.log(values)
 		const { contactname, contactphone } = values
 		dispatch(changeContact({ id: id, name: contactname, number: contactphone }))
 		closeModal()
 	}
 
 	return (
-		<div
-			className={css.ContactChangeModal}
-			onClick={() => {
-				closeModal()
-			}}
-		>
+		<div className={css.ContactChangeModal}>
 			<div className={css.formWrapper}>
 				<button
 					className={css.closeBtn}

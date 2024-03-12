@@ -12,7 +12,6 @@ const ContactForm = ({
 		contactphone: '',
 	},
 	onSubmit,
-	closeModal,
 }) => {
 	const contactNameId = useId()
 	const contactPhoneId = useId()
@@ -29,10 +28,7 @@ const ContactForm = ({
 	})
 
 	const handleSubmit = (values, actions) => {
-		// const { contactname, contactphone } = values
-		// dispatch(addContact({ name: contactname, phone: contactphone }))
-
-		console.log('Submit contact form', values)
+		// console.log('Submit contact form', values)
 		onSubmit(values)
 		actions.resetForm()
 	}
@@ -45,7 +41,6 @@ const ContactForm = ({
 				validationSchema={FeedbackSchema}
 			>
 				<Form className={css.form}>
-					{/* Use the TextField component for name and phone fields */}
 					<TextField
 						fieldSettings={{
 							fieldTitle: 'Name',
