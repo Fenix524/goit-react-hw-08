@@ -18,14 +18,14 @@ const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'))
 
 function App() {
 	const dispatch = useDispatch()
-	const { isRefreshing } = useAuth
+	const { isRefreshing } = useAuth()
 
 	useEffect(() => {
 		dispatch(refreshUser())
 	}, [dispatch])
 
 	return isRefreshing ? (
-		<b className='wrapper'>Restoring previous session, please wait...</b>
+		<b>Restoring previous session, please wait...</b>
 	) : (
 		<>
 			<Routes>
@@ -55,8 +55,8 @@ function App() {
 							<PrivateRoute redirectTo='/login' component={<ContactsPage />} />
 						}
 					/>
+					<Route path='*' element={<NotFoundPage />} />
 				</Route>
-				<Route path='*' element={<NotFoundPage />} />
 			</Routes>
 		</>
 	)

@@ -37,7 +37,7 @@ const Header = () => {
 										Log in
 									</Link>
 									<Link to='/register' className={css.navItem}>
-										Sign in
+										Sign up
 									</Link>
 								</>
 							)}

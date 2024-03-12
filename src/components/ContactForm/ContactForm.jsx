@@ -30,11 +30,9 @@ const ContactForm = () => {
 	})
 
 	const dispatch = useDispatch()
-	const onSubmit = (values, actions) => {
+	const handleSubmit = (values, actions) => {
 		const { contactname, contactphone } = values
-		dispatch(
-			addContact({ id: nanoid(), name: contactname, phone: contactphone })
-		)
+		dispatch(addContact({ name: contactname, phone: contactphone }))
 
 		actions.resetForm()
 	}
@@ -43,7 +41,7 @@ const ContactForm = () => {
 		<div className='ContactForm'>
 			<Formik
 				initialValues={initialValues}
-				onSubmit={onSubmit}
+				onSubmit={handleSubmit}
 				validationSchema={FeedbackSchema}
 			>
 				<Form className={css.form}>
